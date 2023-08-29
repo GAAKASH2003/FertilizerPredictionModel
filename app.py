@@ -18,7 +18,13 @@ Temp Request Body:
     "Potassium":0,
     "Phosphorous":20
 }
+
+uvicorn app:app
 '''
+
+@app.get("/")
+def index():
+    return {"Message":"Hello world"}
 
 @app.post("/predict")
 def predict(data: dict):
