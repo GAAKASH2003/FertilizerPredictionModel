@@ -1,11 +1,20 @@
 from fastapi import FastAPI
 import joblib
-from flask_cors import CORS
-
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-CORS(app)
+origins = [
+    '*'
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = origins,
+    allow_credentials= True,
+    allow_methods = ['*'],
+    allow_headers  = ['*']
+)
+
 # Load the pre-trained model
 model = joblib.load("FertilizerPkl.pkl")
 
