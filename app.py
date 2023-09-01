@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 import joblib
+from flask_cors import CORS
+
 
 app = FastAPI()
 
+CORS(app)
 # Load the pre-trained model
 model = joblib.load("FertilizerPkl.pkl")
 
